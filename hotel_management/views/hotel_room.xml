@@ -1,0 +1,65 @@
+<odoo>
+    <!-- Form View for Hotel Room -->
+    <record id="view_hotel_room_form" model="ir.ui.view">
+        <field name="name">hotel.room.form</field>
+        <field name="model">hotel_management.room</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Room">
+                <header>
+                    <field name="status" widget='statusbar' statusbar_visible="available,booked,occupied"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                        <page string="Information">
+                            <group>
+                                <group>
+                                    <field name="floor_id"/>
+                                    <field name="manager_id"/>
+                                </group>
+                                <group>
+                                    <field name="room_type"/>
+                                    <field name="rent"/>
+                                    <field name="number_of_person"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Amenities">
+                            <field name="amenities_id">
+                                <tree editable="bottom">
+                                    <field name="amenities_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="total_price"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hotel_room_tree" model="ir.ui.view">
+        <field name="name">hotel.room.tree</field>
+        <field name="model">hotel_management.room</field>
+        <field name="arch" type="xml">
+            <tree string="Hotel Rooms">
+                <field name="name"/>
+                <field name="floor_id"/>
+                <field name="manager_id"/>
+                <field name="room_type"/>
+                <field name="rent"/>
+                <field name="number_of_person"/>
+                <field name="status" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

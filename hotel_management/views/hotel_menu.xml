@@ -1,0 +1,165 @@
+<odoo>
+    <!-- Main Menu for Hotel Management -->
+    <menuitem 
+        id="menu_hotel_management_root" 
+        name="Hotel Management" 
+        sequence="100" 
+    />
+
+    <!-- Actions for Hotel Management Models -->
+    <record id="action_hotel_reservation" model="ir.actions.act_window">
+        <field name="name">Hotel Reservation</field>
+        <field name="res_model">hotel_management.reservation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Reservation.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_hotel_floor" model="ir.actions.act_window">
+        <field name="name">Floors</field>
+        <field name="res_model">hotel_management.floor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Floor.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_hotel_amenities" model="ir.actions.act_window">
+        <field name="name">Amenities</field>
+        <field name="res_model">hotel_management.amenities</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Amenity.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_hotel_room" model="ir.actions.act_window">
+        <field name="name">Hotel Rooms</field>
+        <field name="res_model">hotel_management.room</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Room.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_hotel_services" model="ir.actions.act_window">
+        <field name="name">Hotel Services</field>
+        <field name="res_model">hotel_management.services</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Service.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem 
+        id="menu_hotel_management_root" 
+        name="Hotel Management" 
+        sequence="10" 
+    />
+    
+    <menuitem 
+        id="menu_configuration"
+        name="Configuration"
+        parent="menu_hotel_management_root"
+        sequence="20" 
+    />
+
+    <menuitem 
+        id="menu_hotel_reservation" 
+        name="Reservations"
+        parent="menu_hotel_management_root"
+        action="action_hotel_reservation"
+        sequence="10" 
+    />
+    
+    <menuitem 
+        id="menu_hotel_room" 
+        name="Rooms"
+        parent="menu_configuration"
+        action="action_hotel_room"
+        sequence="10" 
+    />
+    
+    <menuitem 
+        id="menu_hotel_floor" 
+        name="Floors"
+        parent="menu_configuration"
+        action="action_hotel_floor"
+        sequence="20" 
+    />
+    
+    <menuitem 
+        id="menu_hotel_amenities" 
+        name="Amenities"
+        parent="menu_configuration"
+        action="action_hotel_amenities"
+        sequence="30" 
+    />
+    
+    <menuitem 
+        id="menu_hotel_services" 
+        name="Services"
+        parent="menu_configuration"
+        action="action_hotel_services"
+        sequence="40" 
+    />
+    
+    <!-- Reporting Menu -->
+    <!-- <menuitem id="menu_hotel_configuration_reporting"
+        name="Reporting"
+        parent="menu_hotel_management_root"
+        action="action_room_booking_reporting"
+        sequence="20" />
+
+    <record id="action_room_booking_reporting" model="ir.actions.act_window">
+        <field name="name">Room Booking Report</field>
+        <field name="res_model">room.booking.detail</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_report_room_booking" model="ir.actions.report">
+        <field name="name">Room Booking Order</field>
+        <field name="model">hotel_management.reservation.line</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hotel_management.report_room_booking</field>
+        <field name="report_file">hotel_management.report_room_booking</field>
+        <field name="binding_model_id" ref="model_hotel_management_reservation_line"/>
+        <field name="binding_type">report</field>
+    </record> -->
+
+    <!-- Define the window action -->
+    <record id="action_room_booking_report_form" model="ir.actions.act_window">
+        <field name="name">Room Booking Report</field>
+        <field name="res_model">room.booking.detail</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_room_booking_report_form"/>
+        <field name="target">new</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Room Booking Report.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item for Reporting -->
+    <menuitem id="menu_hotel_reporting"
+              name="Reporting"
+              parent="menu_hotel_management_root"
+              action="action_room_booking_report_form"
+              sequence="20"/>
+
+
+</odoo>

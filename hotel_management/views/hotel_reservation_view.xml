@@ -1,0 +1,82 @@
+<odoo>
+    <!-- Form view for Hotel Reservation -->
+    <record id="view_hotel_management_reservation_form" model="ir.ui.view">
+        <field name="name">hotel.management.reservation.form</field>
+        <field name="model">hotel_management.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Reservation">
+                <header>
+                    <field name="state" widget='statusbar' statusbar_visible="draft,booking,checkin,checkout,done,cancel"/>
+
+                    <!-- Cancel Button -->
+                    <button name="action_cancel" type="object" string="Cancel"
+                            class="btn-danger"
+                            invisible="state != 'draft'"/>
+
+                    <!-- Check-In Button -->
+                    <button name="action_checkin" type="object" string="Check-In"
+                            class="btn-primary"
+                            invisible="state not in ('booking')"/>
+
+                    <!-- Check-Out Button -->
+                    <button name="action_checkout" type="object" string="Check-Out"
+                            class="btn-primary"
+                            invisible="state != 'checkin'"/>
+
+                    <!-- Done Button -->
+                    <button name="action_done" type="object" string="Done"
+                            class="btn-success"
+                            invisible="state != 'checkout'"/>
+                    
+                    <!-- Booking Button -->
+                    <button name="action_booking" type="object" string="Book"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    
+                </header>
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="name" colspan="4"/>
+                        </h1>
+                    </group>
+                    <group>
+                        <field name="customer_ids"/>
+                        <field name="reservation_reference"/>
+                        <field name="order_date"/>
+                    </group>
+                    <notebook>
+                        <page string="Reservation Lines">
+                            <field name="reservation_line_ids">
+                                <tree editable="bottom">
+                                    <!-- Ensure these fields are defined in the hotel_management.reservation.line model -->
+                                    <field name="room_id"/>
+                                    <field name="check_in"/>
+                                    <field name="check_out"/>
+                                    <field name="rent"/>
+                                    <field name="duration"/>
+                                    <field name="sub_total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hotel_reservation_tree" model="ir.ui.view">
+        <field name="name">hotel_management.reservation.tree</field>
+        <field name="model">hotel_management.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Hotel Reservations">
+                <field name="name"/>
+                <field name="customer_ids"/>
+                <field name="room_id" string="Room"/>
+                <field name="order_date"/>
+                <field name="state" widget="badge" options="{'color': {'draft': 'bg-light', 'booking': 'bg-warning', 'checkin':'bg-danger', 'checkout':'bg-info', 'done': 'bg-success'}}"/>
+                <field name="duration"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

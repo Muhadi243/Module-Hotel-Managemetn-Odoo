@@ -1,0 +1,30 @@
+{
+    "name": "Hotel Management",
+    "version": "17.0.1.0.0",
+    "category": "Addons",
+    "summary": "Hotel Management is an addon for Odoo 17 to Manage Hotels",
+    "description": """Hotel Management is an addon for Odoo 17 to Manage Hotels""",
+    "author": "Dimas",
+    "company": "PT Dimas",
+    "maintainer": "ERP Team PT Dimas",
+    "depends": ["web", "mail", "product"],
+    "data": [
+        "wizard/booking_report_view.xml",
+        "security/ir.model.access.csv",
+        "views/room_booking_reports.xml",
+        "views/hotel_reservation_view.xml",
+        "views/hotel_floor.xml",
+        "views/hotel_room.xml",
+        "views/hotel_amenities.xml",
+        "views/hotel_menu.xml",
+        "views/report.xml",
+        "views/hotel_services.xml",
+        "views/sequence.xml",  
+    ],
+    "assets": {
+        # Define assets if needed
+    },
+    "installable": True,
+    "auto_install": False,
+    "application": False,
+}

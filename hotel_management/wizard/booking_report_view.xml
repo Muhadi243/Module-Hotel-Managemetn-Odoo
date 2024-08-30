@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_room_booking_report_form" model="ir.ui.view">
+        <field name="name">reporting.wizard.form</field>
+        <field name="model">room.booking.detail</field>
+        <field name="arch" type="xml">
+            <form string="BOOK ROOM REPORTING">
+                <sheet>
+                    <group>
+                        <field name="check_in"/>
+                        <field name="check_out"/>
+                        <field name="room_id"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_export_excel" type="object" string="Download Excel" class="btn-primary" icon="fa-download"/>
+                    <button name="action_room_booking_pdf" type="object" string="Download PDF" class="btn-primary" icon="fa-download"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
